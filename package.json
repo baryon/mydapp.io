@@ -1,34 +1,44 @@
 {
   "name": "mydapp.io",
-  "version": "1.1.0",
-  "description": "Web Hosting for Decentralized Applications",
+  "version": "1.0.0",
+  "description": "A Decentralized Web Hosting for Decentralized Applications",
+  "productName": "MyDapp.io",
+  "cordovaId": "org.cordova.quasar.app",
   "author": "lilong@chainbow.io",
   "private": true,
   "scripts": {
-    "dev": "backpack dev",
-    "build": "nuxt build && backpack build",
-    "start": "cross-env NODE_ENV=production node build/main.js",
-    "precommit": "npm run lint",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "server": "./node_modules/.bin/http-server dist/spa-mat",
+    "build": "./node_modules/.bin/quasar build",
+    "dev": "./node_modules/.bin/quasar dev",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "cross-env": "^5.0.1",
-    "koa": "^2.4.1",
-    "nuxt": "latest",
-    "source-map-support": "^0.4.15"
+    "axios": "^0.18.0",
+    "vue-i18n": "^7.3.3"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "backpack-core": "^0.3.0",
-    "eslint": "^3.13.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-html": "^2.0.3",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
-    "eslint-plugin-promise": "^3.4.0",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "nodemon": "^1.11.0",
-    "scmp": "^2.0.0"
-  }
+    "eslint-plugin-vue": "^4.3.0",
+    "http-server": "^0.11.1",
+    "quasar-cli": "^0.16.0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
 }
