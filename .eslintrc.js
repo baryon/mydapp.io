@@ -25,6 +25,8 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+
     // allow async-await
     'generator-star-spacing': 'off',
 
