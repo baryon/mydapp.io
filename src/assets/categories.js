@@ -6,46 +6,8 @@ export default [
         features: [
             {
                 title: 'EOSノード投票',
-                icon: 'style',
-                hash: 'color-palette'
-            }
-        ]
-    },
-    {
-        title: 'CSS Helpers',
-        icon: 'layers',
-        hash: 'css-helpers',
-        features: [
-            {
-                title: 'Flex CSS',
-                icon: 'web',
-                hash: 'flex-css',
-                iframeTabs: true,
-                tabs: [
-                    {
-                        title: 'Row',
-                        label: 'Row',
-                        icon: 'web',
-                        hash: 'flex-row'
-                    },
-                    {
-                        title: 'Column',
-                        label: 'Column',
-                        icon: 'web',
-                        hash: 'flex-column'
-                    },
-                    {
-                        title: 'Gutter',
-                        label: 'Gutter',
-                        icon: 'web',
-                        hash: 'flex-gutter'
-                    }
-                ]
-            },
-            {
-                title: 'Shadows',
-                icon: 'layers',
-                hash: 'shadows'
+                image: 'statics/assets/eos.png',
+                hash: 'eos'
             }
         ]
     },
@@ -56,13 +18,13 @@ export default [
         features: [
             {
                 title: 'Kyber Network',
-                icon: 'panorama_wide_angle',
-                hash: 'kyber'
+                image: 'statics/assets/knc.png',
+                link: 'https://kyber.network/swap/eth_knc'
             },
             {
                 title: 'DDEX',
-                icon: 'group',
-                hash: 'ddex'
+                image: 'statics/assets/ddex.png',
+                link: 'https://ddex.io/'
             }
         ]
     },
@@ -73,17 +35,17 @@ export default [
         features: [
             {
                 title: 'Crypto Kitties',
-                icon: 'view_day',
+                image: 'statics/assets/cryptokitties.png',
                 link: 'https://www.cryptokitties.co/'
             },
             {
                 title: 'John Orion Young',
-                icon: 'skip_next',
+                image: 'statics/assets/johnorionyoung.png',
                 link: 'https://www.johnorionyoung.com/'
             },
             {
                 title: 'ether online',
-                icon: 'linear_scale',
+                image: 'statics/assets/etheronline.png',
                 link: 'https://ether.online/'
             }
         ]
@@ -95,15 +57,14 @@ export default [
         features: [
             {
                 title: '非小号',
-                icon: 'text_fields',
+                image: 'statics/assets/feixiaohao.png',
                 link: 'https://www.feixiaohao.com/'
             },
             {
                 title: 'COIN OTAKU',
-                label: 'Textbox',
-                icon: 'text_format',
+                image: 'statics/assets/coinotaku.png',
                 link: 'https://coin-otaku.com/'
-            },
+            }
         ]
     },
     {
@@ -113,7 +74,7 @@ export default [
         features: [
             {
                 title: 'Platform Detection',
-                icon: 'phonelink',
+                image: 'statics/256.png',
                 hash: 'platform'
             }
         ]

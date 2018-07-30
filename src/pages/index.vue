@@ -2,33 +2,30 @@
   <q-page
     padding
     class="page-showcase">
-    <div class="showcase-top text-center">
-      <img src="statics/256.png">
 
-      <p class="caption">
-        Use sidebar to browse through demos, which showcase only a few of the Quasar components and features.
-        <br>
-        For a full list, visit the documentation website.
-      </p>
-    </div>
-
-    <div class="row justify-center">
-      <div
-        style="width: 850px; max-width: 90vw;"
-        class="row">
-        <div
-          v-for="category in list"
-          :key="category.hash"
-          class="col-xs-6 col-sm-4 col-lg-3">
+    <q-list
+      v-for="category in categories"
+      :key="category.hash">
+      <q-collapsible opened="true" :icon="category.icon" :label="category.title">
+        <div class="row justify-center">
           <div
-            class="card text-center category-link text-primary"
-            @click="show(category)">
-            <q-icon :name="category.icon" />
-            <p class="caption">{{ category.title }}</p>
+            style="width: 850px; max-width: 90vw;"
+            class="row">
+            <div
+              v-for="feature in category.features"
+              :key="feature.hash"
+              class="col-xs-4 col-sm-3 col-lg-2">
+              <div
+                class="card text-center category-link text-primary"
+                @click="show(category, feature)">
+                <img :src="feature.image" />
+                <p class="caption">{{ feature.title }}</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </q-collapsible>
+    </q-list>
 
     <q-page-sticky
       v-show="category"
@@ -51,22 +48,16 @@ import categories from '../assets/categories'
 export default {
     data () {
         return {
-            category: false
-        }
-    },
-    computed: {
-        list () {
-            return this.category || categories
+            categories: categories
         }
     },
     methods: {
-        show (link) {
-            if (link.features) {
-                this.category = link.features
-                this.hash = link.hash
-                return
+        show (category, feature) {
+            if (feature.link) {
+                location.href = feature.link
+            } else {
+                this.$router.push(`/${category.hash}/${feature.hash}`)
             }
-            this.$router.push(`/${this.hash}/${link.hash}`)
         }
     }
 }
@@ -77,19 +68,19 @@ export default {
 
     .page-showcase
         img
-            width 100px
-            height 100px
-            margin-bottom 15px
+            width 60px
+            height 60px
+            margin-bottom 8px
         .showcase-top
-            margin-bottom 35px
+            margin-bottom 18px
             .q-alert
                 max-width 500px
         .card
             cursor pointer
             position relative
-            padding 16px
+            padding 8px
             .q-icon
-                font-size 56px
+                font-size 30px
             p
                 color rgba(0, 0, 0, .87)
                 margin 15px 0 0 0 !important

@@ -9,7 +9,7 @@
   "scripts": {
     "server": "./node_modules/.bin/http-server dist/spa-mat",
     "build": "./node_modules/.bin/quasar build",
-    "dev": "./node_modules/.bin/quasar dev",
+    "dev": "./node_modules/.bin/quasar dev -t ios",
     "lint": "eslint --fix --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
