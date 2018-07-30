@@ -7,6 +7,15 @@ export default [
         ]
     },
 
+    // 英文以太主页
+    {
+        path: '/dev',
+        component: () => import('layouts/default'),
+        children: [
+            {path: 'platform', name: 'platform', component: () => import('pages/dev/platform-detection')}
+        ]
+    },
+
     // 中文以太主页
     {
         path: '/index/eth/zh',
@@ -40,6 +49,6 @@ export default [
     // }
     { // Always leave this as last one
         path: '*',
-        component: () => import('pages/404')
+        component: () => import('pages/error404')
     }
 ]

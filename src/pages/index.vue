@@ -1,62 +1,109 @@
 <template>
-  <q-page class="flex flex-center">
-    {{ web3.version }}
-    <br>
-    {{ accounts }}
-    <br>
-    {{ account }}
-    <br>
-    {{ network }}
+  <q-page
+    padding
+    class="page-showcase">
+    <div class="showcase-top text-center">
+      <img src="statics/256.png">
+
+      <p class="caption">
+        Use sidebar to browse through demos, which showcase only a few of the Quasar components and features.
+        <br>
+        For a full list, visit the documentation website.
+      </p>
+    </div>
+
+    <div class="row justify-center">
+      <div
+        style="width: 850px; max-width: 90vw;"
+        class="row">
+        <div
+          v-for="category in list"
+          :key="category.hash"
+          class="col-xs-6 col-sm-4 col-lg-3">
+          <div
+            class="card text-center category-link text-primary"
+            @click="show(category)">
+            <q-icon :name="category.icon" />
+            <p class="caption">{{ category.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <q-page-sticky
+      v-show="category"
+      position="bottom-right"
+      :offset="[18, 18]">
+      <q-btn
+        round
+        color="secondary"
+        @click="category = false"
+        class="animate-pop">
+        <q-icon name="keyboard_backspace" />
+      </q-btn>
+    </q-page-sticky>
   </q-page>
 </template>
 
-<style>
-</style>
-
 <script>
-import provider from '../utils/provider.js'
+import categories from '../assets/categories'
 
 export default {
-    name: 'PageIndex',
-    data: function () {
+    data () {
         return {
-            web3: provider(),
-            accounts: [],
-            account: '',
-            network: ''
-
+            category: false
         }
     },
-    created: async function () {
-        console.log(this.web3)
-        const accounts = await this.web3.eth.getAccounts()
-        if (accounts && accounts.length > 0) {
-            this.account = accounts[0]
+    computed: {
+        list () {
+            return this.category || categories
         }
-
-        this.web3.eth.getBlock(0, (err, block) => {
-            let data = {}
-            this.network = data
-            if (err) {
-                console.log(err, accounts)
+    },
+    methods: {
+        show (link) {
+            if (link.features) {
+                this.category = link.features
+                this.hash = link.hash
                 return
             }
-
-            if (block && block.hash === '0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3') {
-                data.chain = 'mainnet'
-                data.etherscan = 'https://etherscan.io'
-            } else if (block && block.hash === '0x41941023680923e0fe4d74a34bdac8141f2540e3ae90623718e47d66d1ca4a2d') {
-                data.chain = 'ropsten'
-                data.etherscan = 'https://testnet.etherscan.io'
-            } else if (block && block.hash === '0xa3c565fc15c7478862d50ccd6561e3c06b24cc509bf388941c25ea985ce32cb9') {
-                data.chain = 'kovan'
-                data.etherscan = 'https://kovan.etherscan.io'
-            } else {
-                data.chain = 'privatenet'
-                data.etherscan = 'https://testnet.etherscan.io'
-            }
-            this.network = data
-        })
+            this.$router.push(`/${this.hash}/${link.hash}`)
+        }
     }
 }
 </script>
+
+<style lang="stylus">
+    @import '~variables'
+
+    .page-showcase
+        img
+            width 100px
+            height 100px
+            margin-bottom 15px
+        .showcase-top
+            margin-bottom 35px
+            .q-alert
+                max-width 500px
+        .card
+            cursor pointer
+            position relative
+            padding 16px
+            .q-icon
+                font-size 56px
+            p
+                color rgba(0, 0, 0, .87)
+                margin 15px 0 0 0 !important
+            &:before
+                content ''
+                position absolute
+                top 0
+                right 0
+                bottom 0
+                left 0
+                border-radius 2px
+                opacity 0
+                transition opacity .2s
+                background currentColor
+            &:hover:before
+                opacity .4
+</style>
