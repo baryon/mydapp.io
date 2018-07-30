@@ -6,7 +6,10 @@
     <q-list
       v-for="category in categories"
       :key="category.hash">
-      <q-collapsible opened="true" :icon="category.icon" :label="category.title">
+      <q-collapsible
+        opened="true"
+        :icon="category.icon"
+        :label="category.title">
         <div class="row justify-center">
           <div
             style="width: 850px; max-width: 90vw;"
@@ -18,7 +21,7 @@
               <div
                 class="card text-center category-link text-primary"
                 @click="show(category, feature)">
-                <img :src="feature.image" />
+                <img :src="feature.image">
                 <p class="caption">{{ feature.title }}</p>
               </div>
             </div>

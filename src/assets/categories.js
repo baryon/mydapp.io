@@ -76,6 +76,31 @@ export default [
                 title: 'Platform Detection',
                 image: 'statics/256.png',
                 hash: 'platform'
+            },
+            {
+                title: 'Sign Message',
+                image: 'statics/256.png',
+                hash: 'signMessage'
+            },
+            {
+                title: 'signPersonalMessage',
+                image: 'statics/256.png',
+                hash: 'signPersonalMessage'
+            },
+            {
+                title: 'signTypedMessage',
+                image: 'statics/256.png',
+                hash: 'signTypedMessage'
+            },
+            {
+                title: 'signTransaction',
+                image: 'statics/256.png',
+                hash: 'signTransaction'
+            },
+            {
+                title: 'sendTransaction',
+                image: 'statics/256.png',
+                hash: 'sendTransaction'
             }
         ]
     }
